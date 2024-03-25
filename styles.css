@@ -1,0 +1,61 @@
+body {
+    display: grid;
+    align-items: center;
+    height: 100vh;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    margin: 0 auto;
+}
+
+#csv {
+    display: none;
+}
+
+.drop-files {
+    padding: 40px;
+    text-align: center;
+    border: 2px dashed;
+    border-radius: 12px;
+}
+
+#submit,
+#draft {
+    display: block;
+    width: fit-content;
+    padding: 10px 40px;
+    margin: 20px auto 0;
+}
+
+#selectedFiles {
+    pointer-events: none;
+    margin-top: 10px;
+}
+
+.label {
+    cursor: pointer;
+    padding: 10px;
+}
+
+.entries-container,
+.winners-container {
+    border: 1px solid;
+    padding: 10px;
+    margin: 0 auto;
+    width: 50%;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 12px;
+}
+
+.empty {
+    opacity: 0.4;
+}
+
+li {
+    text-transform: capitalize;
+    margin-bottom: 3px;
+}

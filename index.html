@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FaB CSV Reader</title>
+        <link rel="stylesheet" href="./styles.css" />
+        <script src="./scripts.js" async></script>
+    </head>
+
+    <body>
+        <form id="form">
+            <div class="drop-files">
+                <label for="csv" class="label"
+                    >Clique para selecionar os arquivos</label
+                >
+                <input
+                    type="file"
+                    name="csv"
+                    id="csv"
+                    accept=".csv"
+                    multiple="multiple"
+                    required
+                />
+                <div id="selectedFiles">Arquivos selecionados: 0</div>
+            </div>
+
+            <button id="submit" disabled>Gerar lista</button>
+        </form>
+
+        <div>
+            <div class="entries-container">
+                <p>Selecionados: <span class="empty">lista vazia</span></p>
+                <ol id="entryList"></ol>
+            </div>
+            <button id="draft" onclick="getWinners()" disabled>Sortear</button>
+        </div>
+
+        <div class="winners-container">
+            <p>Sorteados: <span class="empty">lista vazia</span></p>
+            <ol id="winnerList"></ol>
+        </div>
+    </body>
+</html>
