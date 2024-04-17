@@ -35,11 +35,37 @@ function getWinners() {
   draftPlayers.setAttribute("disabled", true);
 }
 
+function removeFromEntryList(id) {
+  const pessoa = entryList[id];
+
+  if (!confirm(`Deseja remover ${parsePersonName(pessoa)}?`)) {
+    return;
+  }
+
+  const newCollection = entryList.filter((_, index) => index !== id);
+  entryList = newCollection;
+  draftListToPopulate.innerHTML = "";
+
+  const emptyListSpan = document.querySelector(".entries-container .empty");
+  emptyListSpan.innerHTML = "";
+
+  entryList.forEach((name, index) => {
+    const listItem = document.createElement("li");
+    listItem.onclick = () => removeFromEntryList(index);
+    listItem.classList.add("person-name");
+    listItem.innerHTML = parsePersonName(name);
+
+    draftListToPopulate.append(listItem);
+  });
+
+  draftPlayers.removeAttribute("disabled");
+}
+
 function getEntryList() {
   const filteredCandidates = nameCollection.filter(
     (currentName) =>
       nameCollection.filter((name) => name === currentName).length > 1 &&
-      currentName,
+      currentName
   );
 
   entryList = [...new Set(filteredCandidates)];
@@ -47,8 +73,10 @@ function getEntryList() {
   const emptyListSpan = document.querySelector(".entries-container .empty");
   emptyListSpan.innerHTML = "";
 
-  entryList.forEach((name) => {
+  entryList.forEach((name, index) => {
     const listItem = document.createElement("li");
+    listItem.onclick = () => removeFromEntryList(index);
+    listItem.classList.add("person-name");
     listItem.innerHTML = parsePersonName(name);
 
     draftListToPopulate.append(listItem);
